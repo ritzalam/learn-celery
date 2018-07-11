@@ -22,8 +22,9 @@ def convert():
                 '-p', '1', 'flight-school.pdf', '-o',
                 'page1.swf'], stderr=STDOUT, stdout=PIPE)
         result = {}
-        #result["stdout"] = out.communicate()[0]
-        print(out.communicate()[0])
+        outStr = out.communicate()[0].decode("utf-8")
+        result["stdout"] = outStr
+        print(outStr)
         result["returncode"] = out.returncode
         return json.dumps(result, ensure_ascii=False)
         #result = out.communicate()[0],out.returncode
